@@ -1,5 +1,5 @@
 import { streamText } from "ai";
-import { anthropic } from "@ai-sdk/anthropic";
+import { google } from "@ai-sdk/google";
 
 export async function POST(req: Request) {
   const { messages, tripDetails } = await req.json();
@@ -30,7 +30,7 @@ For activities, suggest links to platforms like GetYourGuide, Viator, or TripAdv
 Always stay within the user's budget. Be enthusiastic but practical. If the user mentions interests or activities they'd enjoy, proactively suggest relevant experiences and ask if they'd like to add them to their itinerary.`;
 
   const result = streamText({
-    model: anthropic("claude-sonnet-4-20250514"),
+    model: google("gemini-2.0-flash"),
     system: systemPrompt,
     messages,
   });
